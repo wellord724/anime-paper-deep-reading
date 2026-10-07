@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>论文阅读 · 交互样式预览</title>
+<style>
+:root{--paper:#f5f2eb;--card:#fffefa;--ink:#193842;--muted:#596d72;--green:#186b64;--gold:#c2783d;--line:#dddcd3;--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:110px}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.85 'Segoe UI','Microsoft YaHei',sans-serif}a{color:var(--green)}button,input{font:inherit}button{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:8px 14px;min-height:44px;cursor:pointer;transition:background 160ms,border-color 160ms}button:hover{border-color:var(--green);background:#e9efea}button[aria-pressed=true]{background:var(--green);color:white}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:4px}input[type=range]{width:100%;min-height:44px;accent-color:var(--green)}.topbar{position:sticky;top:0;z-index:5;display:flex;gap:12px;align-items:center;justify-content:space-between;padding:12px 28px;background:#f5f2eb;border-bottom:1px solid var(--line)}@supports(backdrop-filter:blur(10px)){.topbar{background:#f5f2ebeb;backdrop-filter:blur(10px)}}.topbar strong{font-size:13px;letter-spacing:1px}.controls{display:flex;flex-wrap:wrap;gap:8px}.layout{max-width:1430px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:44px;margin:auto;padding:48px 38px}.sidebar{position:sticky;top:100px;align-self:start}.sidebar a{display:block;padding:8px 12px;color:var(--muted);text-decoration:none;font-size:14px;border-left:2px solid var(--line)}.sidebar a.active{border-color:var(--green);color:var(--green);background:#e4ece6}main{max-width:1000px;min-width:0}.hero{border-bottom:1px solid var(--ink);padding-bottom:38px}h1{font:500 clamp(40px,5vw,64px)/1.12 Georgia,'Microsoft YaHei',serif;letter-spacing:-1.5px;margin:20px 0}h2{font-size:27px;line-height:1.4;margin:0 0 18px}h3{font-size:20px;line-height:1.5;margin:12px 0}.eyebrow{font-size:11px;letter-spacing:2px;color:var(--green);font-weight:700}.lead{font-size:21px;max-width:760px}.small{font-size:13px;color:var(--muted)}section{margin:52px 0}.panel{padding:24px;background:var(--card);border:1px solid var(--line);border-radius:12px}.grid{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center}.grid svg{width:100%;height:auto}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}.metrics span{display:block;font-size:13px;color:var(--muted)}.metrics b{font:500 30px Georgia,serif;font-variant-numeric:tabular-nums}.note{padding:12px 16px;border-left:3px solid var(--green);background:#eff4ef}.stage-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.stage{position:relative;text-align:left;padding:20px;overflow:hidden;min-height:130px;border-radius:10px}.stage span{display:block}.stage .index{font:26px Georgia,serif;color:var(--gold);margin-bottom:12px}.stage[aria-pressed=true]{background:#e7efe9;color:var(--ink);border-color:var(--green)}.stage:after{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:var(--green);transform:scaleX(var(--fill,0));transform-origin:left}.player{display:grid;grid-template-columns:auto auto auto 1fr;align-items:center;gap:10px;margin-top:18px}.player input{min-width:0}.readout{font-size:13px;font-variant-numeric:tabular-nums;color:var(--muted)}.canvas-line{transition:stroke-width 280ms var(--ease)}details{border-top:1px solid var(--line);padding:14px 0}summary{cursor:pointer;min-height:44px}footer{padding:26px 0;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}.static *{animation:none!important;transition:none!important}svg text{fill:var(--muted);font-size:13px}body:not(.static) .point{transition:r 160ms var(--ease)}
+@media(max-width:760px){.topbar{padding:10px 16px;align-items:flex-start}.topbar strong{max-width:110px}.layout{display:block;padding:28px 18px}.sidebar{position:static;display:flex;flex-wrap:wrap;margin-bottom:28px}.sidebar a{border-left:0;border-bottom:2px solid var(--line)}.grid{grid-template-columns:1fr}.panel{padding:18px}.stage-grid{grid-template-columns:1fr}.stage{min-height:90px;padding:12px 18px}.stage .index{display:inline;margin-right:12px}.stage span{display:inline}.player{grid-template-columns:repeat(3,1fr)}.player input{grid-column:1/-1}.lead{font-size:18px}h1{font-size:40px;overflow-wrap:anywhere}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="topbar"><strong data-zh="论文阅读 / 样式预览" data-en="PAPER READING / PREVIEW">论文阅读 / 样式预览</strong><div class="controls"><button id="language" aria-label="Switch to English">English</button><button id="static" aria-pressed="false" data-zh="静态模式" data-en="Static mode">静态模式</button></div></header>
+<noscript><p style="padding:12px 28px">当前显示中文静态内容；语言切换和参数探索需要 JavaScript。 / Chinese static content is shown; language switching and exploration require JavaScript.</p></noscript><div class="layout"><nav class="sidebar" aria-label="章节导航" data-aria-zh="章节导航" data-aria-en="Section navigation"><a href="#overview" data-zh="阅读入口" data-en="Overview">阅读入口</a><a href="#geometry" data-zh="探索几何" data-en="Explore geometry">探索几何</a><a href="#method" data-zh="分步讲解" data-en="Step through">分步讲解</a><a href="#questions" data-zh="追问与边界" data-en="Questions & limits">追问与边界</a></nav>
+<main>
+<header class="hero" id="overview"><span class="eyebrow">INTERACTIVE PAPER NOTES</span><h1 data-zh="让变化解释公式" data-en="Let change explain the equation">让变化解释公式</h1><p class="lead" data-zh="把两个点向圆盘边界移动：屏幕上的间隔变化有限，双曲距离却迅速增长。拖动滑块，观察这两种距离如何分开。" data-en="Move two points toward the disk boundary. Their screen separation changes modestly, while their hyperbolic distance grows rapidly. Drag the slider to see the two distances diverge.">把两个点向圆盘边界移动：屏幕上的间隔变化有限，双曲距离却迅速增长。拖动滑块，观察这两种距离如何分开。</p><p class="small" data-zh="双语交互组件预览 · 示例采用庞加莱圆盘公式，未展示论文实验结果。完整论文报告应另含背景、贡献、实验、局限与八问。" data-en="Bilingual interaction preview · This example uses Poincaré disk equations, not experimental results. A full report also covers context, contributions, experiments, limitations and eight research questions.">双语交互组件预览 · 示例采用庞加莱圆盘公式，未展示论文实验结果。完整论文报告应另含背景、贡献、实验、局限与八问。</p></header>
+<section id="geometry"><span class="eyebrow">01 / GEOMETRY LAB</span><h2 data-zh="同一个圆盘，两种距离" data-en="One disk, two distances">同一个圆盘，两种距离</h2><div class="panel grid">
+<svg id="disk" viewBox="0 0 440 340" role="img" aria-label="两个点及双曲测地线" data-aria-zh="两个点及双曲测地线" data-aria-en="Two points and their hyperbolic geodesic"><circle cx="220" cy="160" r="132" fill="#eff4ef" stroke="#186b64" stroke-width="2"/><circle id="ring" cx="220" cy="160" r="92.4" fill="none" stroke="#b7c7c0" stroke-dasharray="3 5"/><path id="chord" d="M305.37 124.64 L305.37 195.36" fill="none" stroke="#c2783d" stroke-dasharray="5 5" stroke-width="2"/><path id="geodesic" d="M305.37 124.64 A75.47 75.47 0 0 0 305.37 195.36" fill="none" stroke="#186b64" stroke-width="3"/><circle cx="220" cy="160" r="3" fill="#193842"/><circle class="point" id="u" cx="305.37" cy="124.64" r="7" fill="#186b64"/><circle class="point" id="v" cx="305.37" cy="195.36" r="7" fill="#c2783d"/><text id="ul" x="317.37" y="129.64">u</text><text id="vl" x="317.37" y="200.36">v</text><text x="22" y="326" data-zh="实线：双曲测地线 · 虚线：欧氏弦" data-en="Solid: hyperbolic geodesic · Dashed: Euclidean chord">实线：双曲测地线 · 虚线：欧氏弦</text></svg>
+<div><h3 data-zh="半径接近1时发生了什么？" data-en="What happens as the radius approaches 1?">半径接近1时发生了什么？</h3><label for="radius"><span data-zh="欧氏坐标半径 r" data-en="Euclidean coordinate radius r">欧氏坐标半径 r</span> <strong id="radiusValue">0.70</strong></label><input type="range" id="radius" min="0.15" max="0.97" step="0.01" value="0.70"><div class="metrics"><div><span data-zh="欧氏距离" data-en="Euclidean distance">欧氏距离</span><b id="euclidean">0.536</b></div><div><span data-zh="双曲距离" data-en="Hyperbolic distance">双曲距离</span><b id="hyperbolic">1.834</b></div></div><p class="small" data-zh="夹角固定为45°，两点范数相同。这是精确公式演示，不是训练过程或WordNet嵌入。" data-en="The angle is fixed at 45° and both points have the same norm. This is an exact equation demo, not training or a WordNet embedding.">夹角固定为45°，两点范数相同。这是精确公式演示，不是训练过程或WordNet嵌入。</p><button id="reset" data-zh="重置半径" data-en="Reset radius">重置半径</button></div>
+</div><p class="note" data-zh="双曲距离 d = arcosh(1 + 2‖u−v‖² / ((1−‖u‖²)(1−‖v‖²)))。边界附近，分母趋近于零；这解释了距离的快速增长。" data-en="Hyperbolic distance d = arcosh(1 + 2‖u−v‖² / ((1−‖u‖²)(1−‖v‖²))). Near the boundary, the denominator approaches zero, explaining the rapid growth in distance.">双曲距离 d = arcosh(1 + 2‖u−v‖² / ((1−‖u‖²)(1−‖v‖²)))。边界附近，分母趋近于零；这解释了距离的快速增长。</p><p class="small"><a href="https://proceedings.nips.cc/paper/2017/file/59dfa2df42d9e3d41f5b02bfc32229dd-Paper.pdf" data-zh="公式来源：Nickel & Kiela，2017，式(1)" data-en="Equation source: Nickel & Kiela, 2017, Eq. (1)">公式来源：Nickel & Kiela，2017，式(1)</a></p></section>
+<section id="method"><span class="eyebrow">02 / STEP THROUGH</span><h2 data-zh="先看坐标，再看距离" data-en="Coordinates first, distance second">先看坐标，再看距离</h2><div class="panel" id="playerPanel"><div class="stage-grid"><button class="stage" data-step="0" aria-pressed="true"><span class="index">01</span><span data-zh="放置两个点" data-en="Place two points">放置两个点</span></button><button class="stage" data-step="1" aria-pressed="false"><span class="index">02</span><span data-zh="计算坐标间隔" data-en="Measure coordinate separation">计算坐标间隔</span></button><button class="stage" data-step="2" aria-pressed="false"><span class="index">03</span><span data-zh="用度量读出距离" data-en="Read distance through the metric">用度量读出距离</span></button></div><div class="player"><button id="prev" data-zh="上一步" data-en="Previous">上一步</button><button id="play" aria-pressed="false">播放</button><button id="next" data-zh="下一步" data-en="Next">下一步</button><input id="progress" type="range" min="0" max="100" value="0" step="0.1" aria-label="讲解进度" data-aria-zh="讲解进度" data-aria-en="Explanation progress"></div><div class="controls"><button id="replay" data-zh="重新播放" data-en="Replay">重新播放</button><span id="readout" class="readout">0%</span></div><p id="stepDetail" class="note" aria-live="polite">两点共享半径 r，夹角固定为45°。先确定坐标，才能谈论距离。</p><p class="small" data-zh="点击步骤或拖动进度。播放条表示讲解顺序，不代表计算耗时。" data-en="Select a step or scrub the timeline. The timeline represents explanation order, not computation time.">点击步骤或拖动进度。播放条表示讲解顺序，不代表计算耗时。</p></div></section>
+<section id="questions"><span class="eyebrow">03 / READING FURTHER</span><h2 data-zh="图解能解释到哪里？" data-en="What can this diagram explain?">图解能解释到哪里？</h2><details id="limit"><summary data-zh="距离变大，就能证明表示质量更好吗？" data-en="Does larger distance prove a better representation?">距离变大，就能证明表示质量更好吗？</summary><p data-zh="不能。这个图只展示度量的性质。表示质量仍需要论文中的任务、数据划分、基线与指标来验证，不能从视觉上把点拉开就推出效果提升。" data-en="No. The diagram demonstrates a property of the metric. Representation quality still requires task-specific evidence, data splits, baselines and metrics; spreading points visually does not establish an improvement.">不能。这个图只展示度量的性质。表示质量仍需要论文中的任务、数据划分、基线与指标来验证，不能从视觉上把点拉开就推出效果提升。</p></details></section>
+<footer data-zh="这是可复用的样式与交互基准。正式报告需替换示例，保留真实来源与完整证据。" data-en="This is a reusable style and interaction baseline. Replace the example in a full report and retain verified sources and complete evidence.">这是可复用的样式与交互基准。正式报告需替换示例，保留真实来源与完整证据。</footer>
+</main></div>
+<script>
+(() => {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  let lang = 'zh', progress = 0, playing = false, staticMode = reduced.matches;
+  let frame = null, last = null, visible = true, currentStep = -1;
+  const detail = [
+    {zh:'两点共享半径 r，夹角固定为45°。先确定坐标，才能谈论距离。',en:'Both points share radius r at an angle of 45°. Coordinates must be specified before distance is evaluated.'},
+    {zh:'虚线连接两点，表示欧氏坐标间隔。在这个例子中，间隔等于 2r sin(22.5°)。',en:'The dashed chord measures Euclidean coordinate separation: 2r sin(22.5°) in this example.'},
+    {zh:'实线是双曲测地线。距离由度量给出，不等于屏幕上曲线的像素长度。',en:'The solid arc is a hyperbolic geodesic. Its distance comes from the metric, not the curve’s pixel length.'}
+  ];
+  function controls() {
+    $('play').textContent = playing ? (lang === 'zh' ? '暂停' : 'Pause') : (lang === 'zh' ? '播放' : 'Play');
+    $('play').setAttribute('aria-pressed', String(playing));
+    $('static').setAttribute('aria-pressed', String(staticMode));
+    $('static').textContent = staticMode ? (lang === 'zh' ? '恢复动效' : 'Enable motion') : (lang === 'zh' ? '静态模式' : 'Static mode');
+    $('language').textContent = lang === 'zh' ? 'English' : '中文';
+    $('language').setAttribute('aria-label', lang === 'zh' ? 'Switch to English' : '切换到中文');
+  }
+  function render(announce = false) {
+    const step = Math.min(2, Math.floor(progress / (100 / 3)));
+    document.querySelectorAll('.stage').forEach((node, i) => {
+      node.setAttribute('aria-pressed', String(i === step));
+      node.style.setProperty('--fill', staticMode ? 1 : Math.max(0, Math.min(1, (progress - i * 100 / 3) / (100 / 3))));
+    });
+    $('progress').value = progress;
+    $('readout').textContent = Math.round(progress) + '%';
+    if (step !== currentStep || announce) {
+      $('stepDetail').textContent = detail[step][lang];
+      currentStep = step;
+    }
+    $('chord').style.opacity = staticMode || step >= 1 ? 1 : .18;
+    $('geodesic').style.opacity = staticMode || step >= 2 ? 1 : .18;
+    controls();
+  }
+  function cancelFrame() { if (frame !== null) cancelAnimationFrame(frame); frame = null; last = null; }
+  function allowed() { return playing && !staticMode && !reduced.matches && visible && !document.hidden; }
+  function tick(now) {
+    frame = null;
+    if (!allowed()) { last = null; return; }
+    if (last !== null) progress = Math.min(100, progress + (now - last) / 90);
+    last = now;
+    if (progress >= 100) { playing = false; last = null; }
+    render();
+    if (allowed()) frame = requestAnimationFrame(tick);
+  }
+  function sync() { cancelFrame(); if (allowed()) frame = requestAnimationFrame(tick); controls(); }
+  function selectStep(index) { playing = false; progress = index * 100 / 3; sync(); render(true); }
+  function geometry() {
+    const r = Number($('radius').value), angle = Math.PI / 8, x = r * Math.cos(angle), y = r * Math.sin(angle);
+    const px = 220 + 132 * x, py = 132 * y, euclidean = 2 * y;
+    const center = (1 + r * r) / (2 * x), arcRadius = Math.sqrt(center * center - 1) * 132;
+    $('radiusValue').textContent = r.toFixed(2);
+    $('euclidean').textContent = euclidean.toFixed(3);
+    $('hyperbolic').textContent = Math.acosh(1 + 2 * euclidean ** 2 / (1 - r * r) ** 2).toFixed(3);
+    $('ring').setAttribute('r', 132 * r);
+    for (const [id, sign] of [['u', -1], ['v', 1]]) {
+      $(id).setAttribute('cx', px); $(id).setAttribute('cy', 160 + sign * py);
+      $(id + 'l').setAttribute('x', px + 12); $(id + 'l').setAttribute('y', 165 + sign * py);
+    }
+    $('chord').setAttribute('d', `M${px} ${160-py} L${px} ${160+py}`);
+    $('geodesic').setAttribute('d', `M${px} ${160-py} A${arcRadius} ${arcRadius} 0 0 0 ${px} ${160+py}`);
+  }
+  function setLanguage(next) {
+    const anchors = [...document.querySelectorAll('main p, main h1, main h2, main h3')];
+    const anchor = anchors.find(node => node.getBoundingClientRect().bottom >= 120) || $('overview');
+    const offset = anchor.getBoundingClientRect().top;
+    lang = next;
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+    document.querySelectorAll('[data-zh][data-en]').forEach(node => { node.textContent = node.dataset[lang]; });
+    document.querySelectorAll('[data-aria-zh][data-aria-en]').forEach(node => { node.setAttribute('aria-label', lang === 'zh' ? node.dataset.ariaZh : node.dataset.ariaEn); });
+    document.title = lang === 'zh' ? '论文阅读 · 交互样式预览' : 'Paper reading · Interaction preview';
+    render(true);
+    window.scrollBy({top:anchor.getBoundingClientRect().top-offset,behavior:'instant'});
+    try { localStorage.setItem('paper-language', lang); } catch (_) { /* File storage may be unavailable. */ }
+  }
+  $('language').addEventListener('click', () => setLanguage(lang === 'zh' ? 'en' : 'zh'));
+  $('radius').addEventListener('input', geometry);
+  $('reset').addEventListener('click', () => { $('radius').value = .70; geometry(); });
+  $('progress').addEventListener('input', () => { playing = false; progress = Number($('progress').value); sync(); render(true); });
+  document.querySelectorAll('.stage').forEach(node => node.addEventListener('click', () => selectStep(Number(node.dataset.step))));
+  $('prev').addEventListener('click', () => selectStep(Math.max(0, currentStep - 1)));
+  $('next').addEventListener('click', () => selectStep(Math.min(2, currentStep + 1)));
+  $('play').addEventListener('click', () => {
+    if (staticMode || reduced.matches) { selectStep(Math.min(2, currentStep + 1)); return; }
+    if (progress >= 100) progress = 0;
+    playing = !playing; sync(); render();
+  });
+  $('replay').addEventListener('click', () => { progress = 0; playing = !staticMode && !reduced.matches; sync(); render(true); });
+  $('static').addEventListener('click', () => { staticMode = !staticMode; playing = false; document.body.classList.toggle('static', staticMode); sync(); render(true); });
+  reduced.addEventListener('change', () => { staticMode = reduced.matches; playing = false; document.body.classList.toggle('static', staticMode); sync(); render(true); });
+  document.addEventListener('visibilitychange', sync);
+  new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); }, {threshold:.05}).observe($('playerPanel'));
+  const links = [...document.querySelectorAll('.sidebar a')];
+  new IntersectionObserver(entries => {
+    const active = entries.find(entry => entry.isIntersecting);
+    if (active) links.forEach(link => link.classList.toggle('active', link.hash === '#' + active.target.id));
+  }, {rootMargin:'-15% 0px -60% 0px'}).observe($('overview'));
+  const navigation = new IntersectionObserver(entries => {
+    for (const entry of entries) if (entry.isIntersecting) links.forEach(link => link.classList.toggle('active', link.hash === '#' + entry.target.id));
+  }, {rootMargin:'-15% 0px -60% 0px'});
+  document.querySelectorAll('main section').forEach(section => navigation.observe(section));
+  document.body.classList.toggle('static', staticMode);
+  geometry(); render(true);
+  try { if (localStorage.getItem('paper-language') === 'en') setLanguage('en'); } catch (_) { /* Keep the default language. */ }
+})();
+</script>
+</body>
+</html>

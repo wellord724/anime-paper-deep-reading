@@ -1,0 +1,4 @@
+interface:
+  display_name: "论文精读（动画可视化版）"
+  short_description: "双语论文精读、交互图解与自然写作"
+  default_prompt: "使用 $anime-paper-deep-reading 精读我提供的论文，生成中英文 Markdown 和可切换语言的离线交互 HTML，保持米白青绿风格，注重机制、证据与自然表达。"
