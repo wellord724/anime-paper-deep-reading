@@ -3,11 +3,6 @@ name: anime-paper-deep-reading
 description: 精读学术论文，生成中英文 Markdown 与可切换语言的离线交互 HTML，沿用米白青绿风格，以机制探索、分步图解和证据比较解释方法、实验、局限与八问；适用于论文 PDF、链接或材料的深入讲解。
 metadata:
   short-description: 双语论文精读、交互图解与自然写作
-  aigc-provenance: "AIGC:\n    Label: \"1\"\n    ContentProducer: 001191440300708461136T1XGW3\n\
-    \    ProduceID: 58c6d64000c7fec1ca1a98ed34dbe688_9b9496d4c20211f197eb525400393706\n\
-    \    ReservedCode1: mhqSn4MlrUB0WDky0EXNQ7XnyC7Wbk/1o4BGmHdURiD7s7idqOYOK8vVixKj0E+Uhioz+3/GCEWxZFJc2eaKDsWbt9hFAgP0JU8Fos84d7Hu6gXchLcyBBZrsKXZjHeLeNpd2Q09zqLablkDWY6X69ASYiiRAxj47yzCC6IEuPf/hLLew3Lm3LPdalQ=\n\
-    \    ContentPropagator: 001191440300708461136T1XGW3\n    PropagateID: 58c6d64000c7fec1ca1a98ed34dbe688_9b9496d4c20211f197eb525400393706\n\
-    \    ReservedCode2: mhqSn4MlrUB0WDky0EXNQ7XnyC7Wbk/1o4BGmHdURiD7s7idqOYOK8vVixKj0E+Uhioz+3/GCEWxZFJc2eaKDsWbt9hFAgP0JU8Fos84d7Hu6gXchLcyBBZrsKXZjHeLeNpd2Q09zqLablkDWY6X69ASYiiRAxj47yzCC6IEuPf/hLLew3Lm3LPdalQ=\n"
 ---
 
 
