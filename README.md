@@ -15,6 +15,7 @@
 ## 安装
 
 将本仓库完整复制到 Codex 用户 skills 目录，文件夹名为 `anime-paper-deep-reading`。默认位置为 `~/.codex/skills/anime-paper-deep-reading`；若设置了 `CODEX_HOME`，使用其下的 `skills` 目录。
+(可以直接丢给agent完成)
 
 Windows PowerShell（目标目录尚不存在时）：
 
