@@ -19,8 +19,8 @@ Prefer: “The result supports compact hierarchical ranking in this benchmark. I
 不要把 `softmax(QK^T / sqrt(d_k))V` 当作最终公式，或放入 `text` 代码块。Markdown 写作：
 
 $$
-\operatorname{Attention}(Q,K,V)
-=\operatorname{softmax}\!\left(\frac{QK^{\top}}{\sqrt{d_k}}\right)V.
+\mathrm{Attention}(Q,K,V)
+=\mathrm{softmax}\left(\frac{QK^{\top}}{\sqrt{d_k}}\right)V.
 $$
 
 HTML 必须把对应 LaTeX 渲染为专业数学排版。动态输出向量可使用 `\mathbf z=\begin{bmatrix}0.340\\0.000\end{bmatrix}`；它是教学数值示例，实际数值须与交互计算一致。中英文只切换解释文字，公式符号保持一致。
