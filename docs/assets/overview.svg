@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="620" viewBox="0 0 1280 620" role="img" aria-labelledby="title desc">
+  <title id="title">Anime Paper Deep Reading: from papers to understanding</title>
+  <desc id="desc">Papers flow through source checks, mechanism explanations and evidence analysis to bilingual notes and interactive reports. The attention cells are conceptual illustrations, not experiment data.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#186b64"/></marker>
+    <style>text{font-family:Segoe UI,Arial,sans-serif;fill:#193842}.muted{fill:#596d72}.caption{font-size:15px}.label{font-size:12px;letter-spacing:2px;font-weight:700;fill:#186b64}.line{stroke:#dddcd3;stroke-width:2}.arrow{fill:none;stroke:#186b64;stroke-width:2;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="1280" height="620" rx="24" fill="#f5f2eb"/>
+  <text x="52" y="57" class="label">READ THE PAPER. SEE THE MECHANISM.</text>
+  <text x="52" y="115" style="font-family:Georgia,serif;font-size:44px">From papers to understanding.</text>
+  <text x="52" y="153" font-size="18" class="muted">Source-grounded reading · Bilingual notes · Interactive explanations</text>
+  <path d="M52 184H1228" class="line"/>
+  <text x="72" y="224" class="label">01 / RESEARCH INPUT</text>
+  <rect x="72" y="252" width="242" height="263" rx="13" fill="#fffefa" stroke="#dddcd3"/>
+  <rect x="92" y="271" width="53" height="23" rx="5" fill="#e4ece6"/><text x="102" y="288" font-size="11">PAPER</text>
+  <text x="94" y="327" font-size="21">A question.</text><text x="94" y="357" font-size="21">A method.</text><text x="94" y="387" font-size="21">Evidence.</text>
+  <path d="M94 417H286M94 434H262M94 451H276" stroke="#c7cec5" stroke-width="5" stroke-linecap="round"/>
+  <text x="94" y="489" class="caption muted">PDF / URL / paper text</text><path d="M329 380H387" class="arrow"/>
+  <text x="409" y="224" class="label">02 / DEEP READING</text>
+  <rect x="409" y="252" width="325" height="77" rx="12" fill="#e4ece6" stroke="#b4c8bc"/>
+  <circle cx="440" cy="291" r="10" fill="#186b64"/><path d="M435 291L439 295L446 286" fill="none" stroke="white" stroke-width="2"/>
+  <text x="464" y="286" font-size="18" font-weight="600">Check the source</text><text x="464" y="309" class="caption muted">Claims, numbers and conditions</text>
+  <path d="M572 330V347" class="arrow"/>
+  <rect x="409" y="351" width="325" height="77" rx="12" fill="#fffefa" stroke="#dddcd3"/><circle cx="440" cy="390" r="10" fill="#c2783d"/>
+  <text x="464" y="385" font-size="18" font-weight="600">Explain the mechanism</text><text x="464" y="408" class="caption muted">Steps, equations and interactions</text>
+  <path d="M572 429V446" class="arrow"/>
+  <rect x="409" y="450" width="325" height="77" rx="12" fill="#fffefa" stroke="#dddcd3"/><circle cx="440" cy="489" r="10" fill="#596d72"/>
+  <text x="464" y="484" font-size="18" font-weight="600">Assess the evidence</text><text x="464" y="507" class="caption muted">Results, limits and eight questions</text>
+  <path d="M750 380H808" class="arrow"/>
+  <text x="833" y="224" class="label">03 / READ &amp; EXPLORE</text>
+  <rect x="833" y="252" width="369" height="209" rx="12" fill="#fffefa" stroke="#dddcd3"/><path d="M833 294H1202" stroke="#dddcd3"/>
+  <circle cx="852" cy="273" r="4" fill="#c2783d"/><circle cx="866" cy="273" r="4" fill="#b4c8bc"/>
+  <rect x="1098" y="261" width="87" height="23" rx="6" fill="#e4ece6"/><text x="1113" y="277" font-size="11">ZH / EN</text>
+  <text x="852" y="319" font-size="15" font-weight="600">Interactive report</text>
+  <g fill="#186b64">
+    <rect x="852" y="335" width="42" height="32" rx="4" opacity=".78"/><rect x="899" y="335" width="42" height="32" rx="4" opacity=".3"/><rect x="946" y="335" width="42" height="32" rx="4" opacity=".12"/>
+    <rect x="852" y="372" width="42" height="32" rx="4" opacity=".2"/><rect x="899" y="372" width="42" height="32" rx="4" opacity=".7"/><rect x="946" y="372" width="42" height="32" rx="4" opacity=".4"/>
+    <rect x="852" y="409" width="42" height="32" rx="4" opacity=".1"/><rect x="899" y="409" width="42" height="32" rx="4" opacity=".3"/><rect x="946" y="409" width="42" height="32" rx="4" opacity=".8"/>
+  </g>
+  <path d="M1008 348H1180M1008 371H1156M1008 394H1168" stroke="#c7cec5" stroke-width="5" stroke-linecap="round"/>
+  <path d="M1009 429H1178" stroke="#dddcd3" stroke-width="4" stroke-linecap="round"/><path d="M1009 429H1095" stroke="#186b64" stroke-width="4" stroke-linecap="round"/><circle cx="1095" cy="429" r="6" fill="#186b64"/>
+  <rect x="833" y="477" width="369" height="50" rx="10" fill="#e4ece6"/><text x="852" y="509" font-size="15">Markdown notes</text><text x="1034" y="509" font-size="13" class="muted">Chinese + English</text>
+  <path d="M52 558H1228" class="line"/><text x="52" y="590" class="caption muted">Codex skill · Paper-and-teal visual style · Offline HTML</text><text x="1228" y="590" text-anchor="end" font-size="11" class="muted">Concept illustration; cells are not experiment data.</text>
+</svg>
